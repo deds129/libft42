@@ -16,7 +16,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	while (s[i] != '\0')
 	{
-		if(i <= start &&  j < len)
+		if(i >= start &&  j < len)
 		{
 			substr[j] = s[i];
 			j++;
@@ -26,5 +26,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	substr[j] = '\0';
 	return (substr);
 }
+/*
+int main(void)
+{
+	char a[12] = "Hello World!";
+	printf("%s\n",ft_substr(a,6,11));
+	return (0);
+}
+ */
 
 

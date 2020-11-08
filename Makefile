@@ -12,11 +12,15 @@
 
 NAME	= libft.a
 
+NAMES	= libft.so
+
 SRCS =  $(shell find . -name "ft_*.c")
 
 CC		= gcc
 
 GFLAG	= -Wall -Wextra -Werror
+
+FLAGSO = -shared
 
 OBJS	= ${SRCS:.c=.o}
 
@@ -29,6 +33,8 @@ ${NAME}:
 	${CC} ${GFLAG} -c ${SRCS}
 	ar rc ${NAME} ${OBJS}
 	ranlib ${NAME}
+so:
+	${CC} ${FLAGSO} -o ${NAMES} ${OBJS}
 
 all: ${NAME}
 

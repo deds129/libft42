@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hanisha <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/09 13:51:48 by hanisha           #+#    #+#             */
+/*   Updated: 2020/11/09 13:53:17 by hanisha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include	"libft.h"
+#include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -16,7 +27,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	while (s[i] != '\0')
 	{
-		if(i >= start &&  j < len)
+		if (i >= start && j < len)
 		{
 			substr[j] = s[i];
 			j++;
@@ -26,13 +37,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	substr[j] = '\0';
 	return (substr);
 }
-/*
-int main(void)
-{
-	char a[12] = "Hello World!";
-	printf("%s\n",ft_substr(a,6,11));
-	return (0);
-}
- */
-
-

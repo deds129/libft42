@@ -1,0 +1,33 @@
+#include "libft.h"
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*newstr;
+	size_t s1_len;
+	size_t s2_len;
+	size_t i;
+	size_t j;
+	if(s1 == NULL || s2 == NULL)
+		return (NULL);
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+
+	newstr = (char *)malloc(sizeof(char *) * (s1_len + s2_len + 1));
+	//malloc def
+	if (newstr == NULL)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		newstr[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		newstr[i+j] = s2[j];
+		j++;
+	}
+	newstr[i+j] = '\0';
+	return (newstr);
+}

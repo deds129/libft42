@@ -18,11 +18,13 @@ int indexator(char const *s1, char const *set)
 {
 	size_t i;
 	size_t j;
+	size_t flag;
+
 	i = 0;
 	while (s1[i])
 	{
 		j = 0;
-		int flag = 0;
+		flag = 0;
 		while (set[j])
 		{
 			if (s1[i] == set[j])
@@ -55,11 +57,13 @@ int revindexator(char const *s1, char const *set)
 {
 	size_t i;
 	size_t j;
-	i = ft_strlen(s1) -1;
+	size_t flag;
+
+	i = ft_strlen(s1) - 1;
 	while (s1[i])
 	{
 		j = 0;
-		int flag = 0;
+		flag = 0;
 		while (set[j])
 		{
 			if (s1[i] == set[j])
@@ -88,6 +92,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t start;
  	size_t len;
  	size_t temp;
+
+ 	if(!s1 || !set)
+		return (NULL);
 
 	start = indexator(s1,set);
 	temp = revindexator(s1,set);

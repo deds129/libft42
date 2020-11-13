@@ -14,25 +14,25 @@ Negative numbers must be handled.
  3) поциферно записать число в строку
  4)обработать отрицательные числа
  */
-
-size_t num_len(int n1)
+size_t num_len(int n)
 {
 	size_t len;
-	long long int n;
+	long long int n1;
 
-	n = (long long int)n1;
+	n1 = n;
+
 
 	len = 0;
-	if(n1 == 0)
+	if(n == 0)
 		return (1);
-	if (n1 < 0)
+	if (n < 0)
 	{
-		n *= -1;
+		n1 *= -1;
 		len++;
 	}
-	while (n > 0)
+	while (n1 > 0)
 	{
-		n = n/10;
+		n1 = n1/10;
 		len++;
 	}
 	return (len);
@@ -46,7 +46,7 @@ char				*ft_itoa(int n1)
 
 	n = (long long int)n1;
 	len = num_len(n);
-	str = (char *)malloc(sizeof(char *) * len + 1);
+	str = (char *)malloc(sizeof(char) * (len + 1));
 	if(!str)
 		return (NULL);
 	str[len--] = '\0';
@@ -66,12 +66,12 @@ char				*ft_itoa(int n1)
 	}
 	return  (str);
 }
-
+/*
 int main(void)
 {
-	printf("%ld\n",num_len(-225));
-	printf("%s\n",ft_itoa(-244));
+	printf("%ld\n",num_len(-5859));
+	printf("%s\n",ft_itoa(-1));
 	return (0);
 }
-
+*/
 

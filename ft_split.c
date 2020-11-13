@@ -1,5 +1,4 @@
 /*
-#include "libft.h"
  *#1. The string to be split.
  *#2. The delimiter character.
  *
@@ -21,18 +20,55 @@ ended by a NULL pointer.
  3)определить длину слова (элемента будущего массива)
  3)выделить память под каждый массив
  4)выделить память под все массивы
+*/
+#include "libft.h"
 
-
-
-
-size_t world_count(char const *s, char c)
+//Кол-во слов в строке
+size_t ft_wcounter(char const *s, char c)
 {
+	size_t i;
+	size_t counter;
+	size_t len;
+	int flag;
 
+	if(!s || !c)
+		return (0);
+	counter = 0;
+	i = 0;
+	len = ft_strlen(s);
+	if(s[0] != c)
+		counter++;
+	while(i < len - 1)
+	{
+		if(s[i] == c && s[i+1] != c)
+			counter++;
+		i++;
+	}
+	return (counter);
+}
+
+size_t ft_wlen(char const *s, char c)
+{
+	size_t i;
+
+	i = 0;
+	while (s[i] && s[i] != c)
+	{
+		i++;
+	}
+	return (i);
 }
 
 
-
+/*
 char **ft_split(char const *s, char c)
 {
 }
 */
+
+int main(void)
+{
+	char *str = " Hello1wor1111d1ld";
+	printf("%ld\n",ft_wcounter(str,'1'));
+	printf("%ld\n",ft_wlen(str,'1'));
+}

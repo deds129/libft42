@@ -29,7 +29,7 @@ RM 		= rm -rf
 .c.o:
 	${CC} ${GFLAG} -c $< -o ${<:.c=.o}
 
-${NAME}:
+${NAME}:    ${OBJS}
 	${CC} ${GFLAG} -c ${SRCS}
 	ar rc ${NAME} ${OBJS}
 	ranlib ${NAME}

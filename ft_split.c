@@ -94,7 +94,7 @@ char **ft_split(char const *s, char c)
 
 
 	//выделяем память под строки
-	if(!s)
+	if(s == NULL)
 		return (NULL);
 	words_count = ft_wcounter(s,c);
 	split = (char **)malloc(sizeof(char *) * (words_count + 1));
@@ -123,12 +123,12 @@ char **ft_split(char const *s, char c)
 	return (split);
 }
 
-/*
+
 int main(void)
 {
-	char *str = "Hello1wor1111d1ld";
-	printf("%ld\n",ft_wcounter(str,'1'));
-	printf("%ld\n",ft_wlen(str,'1',0));
+	char *str = "                   hello    ";
+	printf("%ld\n",ft_wcounter(str,' '));
+	printf("%ld\n",ft_wlen(str,' ',0));
 }
- */
+
 

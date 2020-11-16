@@ -25,24 +25,6 @@ ended by a NULL pointer.
 
 #include "libft.h"
 
-char			**ft_arr_free(char **split)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (split[i])
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
-	return (NULL);
-}
-
-
-/*
- * подсчет кол-ва слов в строке
- */
 size_t ft_wcounter(char const *s, char c)
 {
 	size_t i;
@@ -65,7 +47,6 @@ size_t ft_wcounter(char const *s, char c)
 	return (counter);
 }
 
-/* метод для нахождения длинны слова */
 size_t ft_wlen(char const *s, char c, int begin_idx)
 {
 	size_t i;
@@ -118,6 +99,7 @@ char **ft_split(char const *s, char c)
 		split[i][j] = '\0';
 		str_len = ft_wlen(s,c,str_len) + 1;
 		i++;
+
 	}
 	split[i] = NULL;
 	return (split);
@@ -126,10 +108,9 @@ char **ft_split(char const *s, char c)
 /*
 int main(void)
 {
-	char *str = "                   hello    ";
+	char *str = "   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ";
 	printf("%ld\n",ft_wcounter(str,' '));
 	printf("%ld\n",ft_wlen(str,' ',0));
+	printf("%s\n", ft_split(str,' ')[2]);
 }
-*/
-
-
+ */

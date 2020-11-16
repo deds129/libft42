@@ -1,9 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hanisha <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/16 14:11:29 by hanisha           #+#    #+#             */
+/*   Updated: 2020/11/16 14:11:35 by hanisha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-/*Outputs the integer ’n’ to the given file
-descriptor.*/
-void ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	unsigned int	n1;
 
@@ -14,7 +23,7 @@ void ft_putnbr_fd(int n, int fd)
 		n1 = n * -1;
 	}
 	else
-		n1 = (unsigned  int)n;
+		n1 = (unsigned int)n;
 	if (n1 >= 10)
 		ft_putnbr_fd(n1 / 10, fd);
 	ft_putchar_fd(n1 % 10 + '0', fd);

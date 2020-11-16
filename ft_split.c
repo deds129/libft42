@@ -123,12 +123,13 @@ char **ft_split(char const *s, char c)
 	return (split);
 }
 
-
+/*
 int main(void)
 {
 	char *str = "                   hello    ";
 	printf("%ld\n",ft_wcounter(str,' '));
 	printf("%ld\n",ft_wlen(str,' ',0));
 }
+*/
 
 

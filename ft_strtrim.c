@@ -105,17 +105,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	trimstr = ft_substr(s1, start, len);
 	return (trimstr);
 }
-/*
-int main(void)
-{
-	char *a = "12345167112";
-	const char *set = "123";
-	printf("%d\n",indexator(a,set));
-	printf("%d\n",revindexator(a,set));
-	char *b = ft_strtrim(a,set);
-	printf("%s\n",b);
-	return (0);
-}
- */
+
 
 

@@ -105,14 +105,30 @@ char **ft_split(char const *s, char c)
 	return (split);
 }
 
-/*
+
 int main(void)
 {
-	char str[] = "1";
-	char str1[] = "      split       this for   me  !       ";
-	printf("%ld\n",ft_wcounter(str,' '));
-	printf("%ld\n",ft_wlen(str,' ',2));
-	printf("%s\n", ft_split(str,' ')[0]);
-	printf("%s\n", ft_split(str1,' ')[4]);
+	char *str1 = "split  ||this|for|me|||||!|";
+	printf("%ld\n",ft_wcounter(str1,'|'));
+	printf("%ld\n",ft_wlen(str1,'|',2));
+	printf("%s\n", ft_split(str1,'|')[0]);
+	printf("%s\n", ft_split(str1,'|')[4]);
 }
+/*
+ * ft_split:      [OK] [OK] [OK] [OK] [CRASH] [OK] [CRASH] [OK] [CRASH] {protected}
+[crash]: your split does not work with empty string
+Test code:
+	char *s = "";
+	char **result = ft_split(s, '\65');
+	split_cmp_array(expected, result);
+
+[crash]: your split does not work with basic input
+Test code:
+	char *s = "split  ||this|for|me|||||!|";
+	char **result = ft_split(s, '|');
+
+[crash]: your split does not work with basic input
+Test code:
+	char *s = "      split       this for   me  !       ";
+	char **result = ft_split(s, ' ');
  */

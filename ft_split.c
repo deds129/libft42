@@ -1,27 +1,3 @@
-/*
- *#1. The string to be split.
- *#2. The delimiter character.
- *
- * The array of new strings resulting from the split.
-   NULL if the allocation fails.
-
-   	Allocates (with malloc(3)) and returns an array
-of strings obtained by splitting ’s’ using the
-character ’c’ as a delimiter. The array must be
-ended by a NULL pointer.
-
- Выделяет (с помощью malloc (3)) и возвращает массив
-строк, полученных разделением 's' с помощью
-символ ’c’ в качестве разделителя. Массив должен быть
-заканчивается указателем NULL.
-
- 1)найти символ в строке
- 2)определить сколько массивов необходимо создать
- 3)определить длину слова (элемента будущего массива)
- 3)выделить память под каждый массив
- 4)выделить память под все массивы
-*/
-
 
 #include "libft.h"
 
@@ -31,7 +7,7 @@ size_t ft_wcounter(char const *s, char c)
 	size_t counter;
 	size_t len;
 
-	if(!s || !c)
+	if(!s)
 		return (0);
 	counter = 0;
 	i = 0;
@@ -47,19 +23,45 @@ size_t ft_wcounter(char const *s, char c)
 	return (counter);
 }
 
-size_t ft_wlen(char const *s, char c, int begin_idx)
+/* метод для нахождения длинны слова */
+size_t ft_wlen(char const *s, char c, int i)
 {
-	size_t i;
-	char temp;
+	size_t idx;
 
-	i  = begin_idx;
-	temp = s[i];
-	while (temp && temp != c)
+	idx = 0;
+	while (s[i] && s[i] != c)
 	{
-		temp = s[++i];
+		i++;
+		idx++;
 	}
-	return (i);
+	return (idx);
 }
+
+char *ft_arrfill(char const *s, size_t len, size_t j)
+{
+	size_t  i;
+	char    *str;
+	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		str[i] = s[j];
+		j++;
+		i++;
+	}
+	str[len] = '\0';
+	return (str);
+}
+
+char **ft_arr_free(char **split)
+{
+	while (*split)
+		free(*split++);
+	free(split);
+	return (NULL);
+}
+
 
 char **ft_split(char const *s, char c)
 {
@@ -67,39 +69,37 @@ char **ft_split(char const *s, char c)
 	char				**split;
 	/*кол-во слов в двумерном массиве [i][]*/
 	size_t				words_count;
-	/*кол-во cимволов в строке массиве [][j]*/
-	size_t				str_len;
-	/*счетчик для посдечета*/
-	size_t				i;
-	size_t				j;
 
+	/*счетчик для исх строки*/
+	size_t				i;
+	/*счетчик для слов (элементов строки)*/
+	size_t				j;
+/*кол-во cимволов в строке  [][j]*/
+	size_t				temp;
+
+	i = 0;
+	j = 0;
+	words_count = ft_wcounter(s,c);
+	temp = 0;
 
 	//выделяем память под строки
-	if(s == NULL)
+	if(!s)
 		return (NULL);
-	words_count = ft_wcounter(s,c);
+
 	split = (char **)malloc(sizeof(char *) * (words_count + 1));
 	if(!split)
 		return (NULL);
 
-	i = 0;
-	str_len = 0;
-	while (i < words_count)
+	while (j < words_count  && s[i] != '\0')
 	{
-		j = 0;
-		split[i] = (char *)malloc(sizeof(char) * ft_wlen(s,c,str_len) -
-				(str_len + 1));
-		if(split[i] == NULL)
-			return (NULL);
-		while (j < (ft_wlen(s,c,str_len)) - str_len)
+		if(s[i] != c)
 		{
-			split[i][j] = s[str_len + j];
-			j++;
+			temp = ft_wlen(s,c,i);
+			if(!(split[j++] = ft_arrfill(s,temp,i)))
+				ft_arr_free(split);
+			i +=temp;
 		}
-		split[i][j] = '\0';
-		str_len = ft_wlen(s,c,str_len) + 1;
 		i++;
-
 	}
 	split[i] = NULL;
 	return (split);
@@ -108,9 +108,11 @@ char **ft_split(char const *s, char c)
 /*
 int main(void)
 {
-	char *str = "   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ";
+	char str[] = "1";
+	char str1[] = "      split       this for   me  !       ";
 	printf("%ld\n",ft_wcounter(str,' '));
-	printf("%ld\n",ft_wlen(str,' ',0));
-	printf("%s\n", ft_split(str,' ')[2]);
+	printf("%ld\n",ft_wlen(str,' ',2));
+	printf("%s\n", ft_split(str,' ')[0]);
+	printf("%s\n", ft_split(str1,' ')[4]);
 }
  */

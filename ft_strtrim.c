@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		indexator(char const *s1, char const *set)
+static int		indexator(char const *s1, char const *set)
 {
 	size_t				i;
 	size_t				j;
@@ -40,7 +40,7 @@ int		indexator(char const *s1, char const *set)
 	return (-1);
 }
 
-int		revindexator(char const *s1, char const *set)
+static int		revindexator(char const *s1, char const *set)
 {
 	size_t i;
 	size_t j;

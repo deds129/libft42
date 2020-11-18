@@ -1,7 +1,7 @@
 
 #include "libft.h"
 
-size_t ft_wcounter(char const *s, char c)
+static size_t ft_wcounter(char const *s, char c)
 {
 	size_t i;
 	size_t counter;
@@ -25,13 +25,11 @@ size_t ft_wcounter(char const *s, char c)
 
 
 /* метод для нахождения длинны слова */
-size_t ft_wlen(char const *s, char c, int i)
+static size_t ft_wlen(char const *s, char c, int i)
 {
 	size_t idx;
 
 	idx = 0;
-	if(!s)
-		return (0);
 	while (s[i] && s[i] != c)
 	{
 		i++;
@@ -40,7 +38,7 @@ size_t ft_wlen(char const *s, char c, int i)
 	return (idx);
 }
 
-char *ft_arrfill(char const *s, size_t len, size_t j)
+static char *ft_arrfill(char const *s, size_t len, size_t idx)
 {
 	size_t  i;
 	char    *str;
@@ -51,15 +49,15 @@ char *ft_arrfill(char const *s, size_t len, size_t j)
 	i = 0;
 	while (i < len)
 	{
-		str[i] = s[j];
-		j++;
+		str[i] = s[idx];
+		idx++;
 		i++;
 	}
 	str[len] = '\0';
 	return (str);
 }
 
-char **ft_arr_free(char **split)
+static char **ft_arr_free(char **split)
 {
 	while (*split)
 		free(*split++);
@@ -109,7 +107,7 @@ char **ft_split(char const *s, char c)
 	return (split);
 }
 
-
+/*
 int main(void)
 {
 	char *str1 = "";
@@ -118,6 +116,7 @@ int main(void)
 	printf("%s\n", ft_split(str1,'|')[0]);
 	printf("%s\n", ft_split(str1,'|')[0]);
 }
+ */
 /*
  * ft_split:      [OK] [OK] [OK] [OK] [OK] [OK] [CRASH] [OK] [OK] {protected}
 [crash]: your split does not work with empty string

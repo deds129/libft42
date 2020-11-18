@@ -33,6 +33,7 @@ ${NAME}:    ${OBJS}
 	${CC} ${GFLAG} -c ${SRCS}
 	ar rc ${NAME} ${OBJS}
 	ranlib ${NAME}
+
 so:
 	${CC} ${FLAGSO} -o ${NAMES} ${OBJS}
 

@@ -34,7 +34,7 @@ static size_t	num_len(int n)
 	return (len);
 }
 
-char	*ft_itoa(int n1)
+char			*ft_itoa(int n1)
 {
 	char				*str;
 	size_t				len;

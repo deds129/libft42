@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int		indexator(char const *s1, char const *set)
+static int	indexator(char const *s1, char const *set)
 {
 	size_t				i;
 	size_t				j;
@@ -40,7 +40,7 @@ static int		indexator(char const *s1, char const *set)
 	return (-1);
 }
 
-static int		revindexator(char const *s1, char const *set)
+static int	revindexator(char const *s1, char const *set)
 {
 	size_t i;
 	size_t j;
@@ -68,7 +68,7 @@ static int		revindexator(char const *s1, char const *set)
 	return (-1);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char		*ft_strtrim(char const *s1, char const *set)
 {
 	char				*trimstr;
 	size_t				start;

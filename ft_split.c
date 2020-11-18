@@ -23,12 +23,15 @@ size_t ft_wcounter(char const *s, char c)
 	return (counter);
 }
 
+
 /* метод для нахождения длинны слова */
 size_t ft_wlen(char const *s, char c, int i)
 {
 	size_t idx;
 
 	idx = 0;
+	if(!s)
+		return (0);
 	while (s[i] && s[i] != c)
 	{
 		i++;
@@ -41,6 +44,8 @@ char *ft_arrfill(char const *s, size_t len, size_t j)
 {
 	size_t  i;
 	char    *str;
+	if(!s)
+		return (NULL);
 	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	i = 0;
@@ -79,56 +84,47 @@ char **ft_split(char const *s, char c)
 
 	i = 0;
 	j = 0;
-	words_count = ft_wcounter(s,c);
+
 	temp = 0;
 
 	//выделяем память под строки
-	if(!s)
+	if(*s)
 		return (NULL);
-
+	words_count = ft_wcounter((char *)s,c);
 	split = (char **)malloc(sizeof(char *) * (words_count + 1));
 	if(!split)
 		return (NULL);
+
 
 	while (j < words_count  && s[i] != '\0')
 	{
 		if(s[i] != c)
 		{
-			temp = ft_wlen(s,c,i);
-			if(!(split[j++] = ft_arrfill(s,temp,i)))
+			temp = ft_wlen((char *)s,c,i);
+			if(!(split[j++] = ft_arrfill((char *)s,temp,i)))
 				ft_arr_free(split);
 			i +=temp;
 		}
 		i++;
 	}
-	split[i] = NULL;
+	split[j] = NULL;
 	return (split);
 }
 
 
 int main(void)
 {
-	char *str1 = "split  ||this|for|me|||||!|";
-	printf("%ld\n",ft_wcounter(str1,'|'));
-	printf("%ld\n",ft_wlen(str1,'|',2));
+	char *str1 = "";
+	//printf("%ld\n",ft_wcounter(str1,'|'));
+	//printf("%ld\n",ft_wlen(str1,'|',2));
 	printf("%s\n", ft_split(str1,'|')[0]);
-	printf("%s\n", ft_split(str1,'|')[4]);
+	printf("%s\n", ft_split(str1,'|')[0]);
 }
 /*
- * ft_split:      [OK] [OK] [OK] [OK] [CRASH] [OK] [CRASH] [OK] [CRASH] {protected}
+ * ft_split:      [OK] [OK] [OK] [OK] [OK] [OK] [CRASH] [OK] [OK] {protected}
 [crash]: your split does not work with empty string
 Test code:
 	char *s = "";
 	char **result = ft_split(s, '\65');
 	split_cmp_array(expected, result);
-
-[crash]: your split does not work with basic input
-Test code:
-	char *s = "split  ||this|for|me|||||!|";
-	char **result = ft_split(s, '|');
-
-[crash]: your split does not work with basic input
-Test code:
-	char *s = "      split       this for   me  !       ";
-	char **result = ft_split(s, ' ');
  */

@@ -88,14 +88,12 @@ char **ft_split(char const *s, char c)
 	temp = 0;
 
 	//выделяем память под строки
-	if(*s)
+	if(!s)
 		return (NULL);
 	words_count = ft_wcounter((char *)s,c);
 	split = (char **)malloc(sizeof(char *) * (words_count + 1));
 	if(!split)
 		return (NULL);
-
-
 	while (j < words_count  && s[i] != '\0')
 	{
 		if(s[i] != c)

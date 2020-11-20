@@ -20,10 +20,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	i = 0;
 	j = 0;
+	if (s == NULL)
+		return (NULL);
 	substr = (char *)malloc(sizeof(*s) * (len + 1));
 	if (substr == NULL)
-		return (NULL);
-	if (s == NULL)
 		return (NULL);
 	while (s[i] != '\0')
 	{

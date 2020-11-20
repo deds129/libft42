@@ -18,7 +18,7 @@ static size_t	ft_wcounter(char const *s, char c)
 	size_t counter;
 	size_t len;
 
-	if (!s)
+	if (!s || s[0] == '\0')
 		return (0);
 	counter = 0;
 	i = 0;
@@ -86,7 +86,7 @@ char			**ft_split(char const *s, char c)
 
 	i = 0;
 	j = 0;
-	if (!s || !s[0])
+	if (!s)
 		return (NULL);
 	if (!(split = (char **)malloc(sizeof(char *) *
 			(ft_wcounter((char *)s, c) + 1))))

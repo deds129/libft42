@@ -6,7 +6,7 @@
 /*   By: hanisha <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:42:20 by hanisha           #+#    #+#             */
-/*   Updated: 2021/02/17 14:42:40 by hanisha          ###   ########.fr       */
+/*   Updated: 2021/02/17 17:23:43 by hanisha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list *new_list;
 	t_list *save;
 
-	if (!lst || !f || !del)
+	if (!lst || !f)
 		return (0);
 	new_list = ft_lstnew(f(lst->content));
 	if (!new_list)

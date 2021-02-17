@@ -80,6 +80,8 @@ char		*ft_strtrim(char const *s1, char const *set)
 	start = indexator(s1, set);
 	temp = revindexator(s1, set);
 	len = temp - start + 1;
+	if (start >= temp)
+		return (ft_strdup(""));
 	trimstr = ft_substr(s1, start, len);
 	return (trimstr);
 }
